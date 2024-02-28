@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 
-import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
+import { createUser, deleteUser, updateUser } from '../../../../lib/actions/user.actions'
 
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -69,11 +69,8 @@ export async function POST(req: Request) {
       lastName: last_name,
       photo: image_url,
     };
-    console.log('creating');
-    
+
     const newUser = await createUser(user);
-    console.log(newUser,'user created locally');
-    
 
     // Set public metadata
     if (newUser) {
